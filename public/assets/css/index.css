@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+.carousel-caption {
+  top: 1.5rem;
+  font-size: 3rem;
+  left: 10%;
+  right: auto;
+}
+.carousel-caption h2,
+.carousel-caption p {
+  background-color: bisque;
+  padding: 1.5rem;
+}
