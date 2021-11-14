@@ -1,0 +1,8 @@
+CREATE TABLE merchandise (
+  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  product_name VARCHAR(30) NOT NULL,
+  product_type VARCHAR(30) NOT NULL,
+  brand_name VARCHAR(30) NOT NULL,
+  product_img VARCHAR(150) NOT NULL,
+  price DECIMAL(10,2) NOT NULL
+);
