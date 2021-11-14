@@ -1,0 +1,20 @@
+CREATE TABLE product_types (
+  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  product_type_name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE brand_names (
+  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  brand_name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE merchandise (
+  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  product_name VARCHAR(30) NOT NULL,
+  product_type INTEGER NOT NULL,
+  brand_name INTEGER NOT NULL,
+  product_img VARCHAR(150) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (product_type) REFERENCES product_types (id) ON DELETE SET NULL,
+  FOREIGN KEY (brand_name) REFERENCES brand_names (id) ON DELETE SET NULL
+);
