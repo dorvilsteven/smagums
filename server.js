@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Add routes
-app.use(require('./controllers'));
+app.use(routes);
 
 
 app.listen(PORT, () => {
