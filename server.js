@@ -8,17 +8,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Add api routes
-app.get("/", (req, res) => {
-  res.send("hi");
-});
 
 // Helper functions:
-function searchProducts() {
-  if (query.brandName) {
-    // brandName
-  }
-  // productTypes
-}
+// function searchProducts() {
+//   if (query.brandName) {
+//     // brandName
+//   }
+//   // productTypes
+// }
 
 // API routes:
 // router.get(‘/api/products/:id’, callback function)
