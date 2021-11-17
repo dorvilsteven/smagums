@@ -18,6 +18,24 @@ app.use(express.static('public'));
 // Add routes
 app.use(routes);
 
+// Add api routes
+
+// Helper functions:
+// function searchProducts() {
+//   if (query.brandName) {
+//     // brandName
+//   }
+//   // productTypes
+// }
+
+// API routes:
+// router.get(‘/api/products/:id’, callback function)
+// router.get(‘/api/products’, callback function) {
+//     searchProducts()
+// }
+// router.get(‘/api/favorites’, callback)
+
+// router.get(‘/login’, callback)
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
