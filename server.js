@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Add routes
-app.use(controllers);
+app.use(routes);
 
 // Add api routes
 
