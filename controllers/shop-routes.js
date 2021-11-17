@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get('/shop', (req, res) => { 
+router.get('/', (req, res) => { 
   res.render('shop');
 });
 
