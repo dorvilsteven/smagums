@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-const express = require('express');
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-
-// Code Here
-
-app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
-});
-=======
 const path = require('path');
 const express = require("express");
 const mysql = require("mysql2");
@@ -55,4 +40,3 @@ app.use(routes);
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
->>>>>>> main
