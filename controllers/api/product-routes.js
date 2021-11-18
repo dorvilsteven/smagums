@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Product } = require("../../models");
 
 // internal use /api, so developers can add product info in database
-// read /api/product
 router.get("/", (req, res) => {
   // SELECT *
   Product.findAll()
@@ -13,7 +12,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// read a specific product by id: /api/product/1
+// read a specific product by id
 router.get("/:id", (req, res) => {
   Product.findOne({
     where: { id: req.params.id },
@@ -31,7 +30,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// create /api/product
+// INSERT INTO
 router.post("/", (req, res) => {
   Product.create({
     product_name: req.body.product_name,
@@ -47,7 +46,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// update /api/product/1
+// UPDATE
 router.put("/:id", (req, res) => {
   Product.update(req.body, {
     where: {
@@ -67,7 +66,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// destroy /api/product/1
+// DELETE
 router.delete("/:id", (req, res) => {
   Product.destroy({
     where: {
