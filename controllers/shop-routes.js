@@ -1,9 +1,5 @@
 const router = require("express").Router();
-const { Product } = require("../../models");
-
-router.get("/", (req, res) => {
-  res.render("shop");
-});
+const { Product } = require("../models");
 
 // read products by product_type: /api/product?product_type=shoes
 router.get("/", (req, res) => {
@@ -23,6 +19,7 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
+
 // read products by brand_name: /api/product?brand_name=ASOS
 router.get("/", (req, res) => {
   //what should the path be??
