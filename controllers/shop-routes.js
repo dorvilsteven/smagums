@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { Product } = require("../models");
 
+router.get("/", (req, res) => {
+  res.render("shop");
+});
+
 // read products by product_type: /api/product?product_type=shoes
 router.get("/", (req, res) => {
   //what should the path be??

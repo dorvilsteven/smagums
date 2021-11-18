@@ -8,10 +8,10 @@ router.use((req, res) => {
   res.status(404).end();
 });
 
-// const homeRoutes = require("./home-routes.js");
-// const shopRoutes = require("./shop-routes.js");
+const homeRoutes = require("./home-routes.js");
+const shopRoutes = require("./shop-routes.js");
 
-// router.use("/", homeRoutes);
-// router.use("/shop", shopRoutes);
+router.use("/", homeRoutes);
+router.use("/shop", shopRoutes);
 
 module.exports = router;
