@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// ?read a specific product by id: /api/product/1
+// read a specific product by id: /api/product/1
 router.get("/:id", (req, res) => {
   Product.findOne({
     where: { id: req.params.id },
@@ -56,7 +56,7 @@ router.put("/:id", (req, res) => {
   })
     .then((data) => {
       if (!data[0]) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: "No product found with this id" });
         return;
       }
       res.json(data);
@@ -67,7 +67,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// ?destroy /api/product/1
+// destroy /api/product/1
 router.delete("/:id", (req, res) => {
   Product.destroy({
     where: {
@@ -76,7 +76,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((data) => {
       if (!data) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: "No product found with this id" });
         return;
       }
       res.json(data);
