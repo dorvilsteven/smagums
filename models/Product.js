@@ -12,19 +12,24 @@ Product.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    productName: {
+    product_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    productType: {
+    product_type: {
       // ?how to join tables
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    brandName: {
+    brand_name: {
       // ?
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    productImageUrl,
+    product_image_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
