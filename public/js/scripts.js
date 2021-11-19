@@ -28,10 +28,14 @@ const isChecked = (filter) => {
 
 const formSubmitHandler = (filterList) => {
     const dataObj = {
+        gender: [],
         product_type: [],
         brand_name: [],
-        price: [], 
+        price: [],
     }
+    filterList.forEach((filter) => {
+        
+    });
     fetch('/api/products/', {
         method: "GET",
         // headers: {
