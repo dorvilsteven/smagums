@@ -4,6 +4,28 @@ const getProductBtn = document.querySelector("#get-product");
 const formSubmitHandler = function (event) {
   event.preventDefault();
 
+  // construct data object
+  // const dataObj = {
+  //   product_type: [],
+  //   brand_name: []
+  // }
+  // const productObject = {
+  //   product_name: 'Wide',
+  //   product_type: ['shoes', 'jackets'],
+  //   brand_name: ['ASOS DESIGN'],
+  //   product_image_url: 'images.asos-media.com/products/asos-design-wide-fit-oxford-1-in-tan-leather-with-toe-cap/12315538-1-tan',
+  //   price: 54,
+  // };
+
+  // fetch("/api/products/search", {
+  //   method: "POST",
+  //   headers: {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(productObject),
+  // }).then();
+
   fetch("/api/products/5", {
     method: "GET",
   }).then((response) => {

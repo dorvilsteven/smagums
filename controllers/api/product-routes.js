@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Product } = require("../../models");
-const { Op } = require("sequelize");
+// const { Op } = require("sequelize");
 
 // internal use /api, so developers can add product info in database
 router.get("/", (req, res) => {
@@ -87,26 +87,35 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-router.post("/search", (req, res) => {
-  Product.findAll({
-    where: {
-      // product_type: 'shoes'
-      product_type: {
-        [Op.in]: req.body.product_type, // array
-      },
-      price: {
-        [Op.lte]: req.body.price,
-      },
-    },
-  });
-});
-const searchTerm = "product_type";
-const data = {
-  [searchTerm]: "shoes",
-};
+// single search term:
+// SELECT * FROM product_db
+// WHERE product_type = 'shoes'
+// product_type: 'shoes'
+
+// multiple search terms - store in array:
+// router.post("/search", (req, res) => {
+//   Product.findAll({
+//     where: {
+//       // SELECT * FROM product_db
+//       // WHERE product_type IN ('shoes', 'shirts')
+//       product_type: {
+//         [Op.in]: req.body.product_type, // array
+//       },
+//       price: {
+//         [Op.lte]: req.body.price,
+//       },
+//     },
+//   });
+// });
+
+// Notes on bracket notation that passes in variable:
+// const searchTerm = "product_type";
+// const data = {
+//   [searchTerm]: "shoes",
+// };
+
+// similar to template literals in string
 // `search term = ${searchTerm}`
 // "search term = " + searchTerm
-// SELECT * FROM Product
-// WHERE product_type IN ('shoes', 'shirts')
-// WHERE product_type = 'shoes'
+
 module.exports = router;
