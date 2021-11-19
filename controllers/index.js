@@ -6,6 +6,7 @@ const shopRoutes = require('./shop-routes.js');
 const loginRoutes = require('./login-routes.js');
 const signUpRoutes = require('./signup-routes.js');
 
+router.use('/api', apiRoutes);
 router.use('/', homeRoutes);
 router.use('/shop', shopRoutes);
 router.use('/login', loginRoutes);
