@@ -1,4 +1,5 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const apiRoutes = require("./api");
 
 const homeRoutes = require('./home-routes.js');
 const shopRoutes = require('./shop-routes.js');
@@ -9,5 +10,13 @@ router.use('/', homeRoutes);
 router.use('/shop', shopRoutes);
 router.use('/login', loginRoutes);
 router.use('/signup', signUpRoutes);
+
+router.use("/", homeRoutes);
+router.use("/shop", shopRoutes);
+
+router.use((req, res) => {
+  // when the request is made to a not-defined endpoint
+  res.status(404).end();
+});
 
 module.exports = router;
