@@ -37,8 +37,7 @@ const formSubmitHandler = function (event) {
         // clear old content every time search is performed
         productEl.text('');
 
-        const containerEl = $("<p></p>");
-        containerEl.addClass(
+        const containerEl = $("<p></p>").addClass(
           "list-item flex-row justify-space-between align-center"
         );
 
@@ -46,11 +45,10 @@ const formSubmitHandler = function (event) {
         const productType = data.product_type;
         const brandName = data.brand_name;
         const priceTag = data.price;
-        const titleEl = $("<span></span>");
-        titleEl.text(`${productName}
+        const titleEl = $("<span></span>").text(`${productName}
           ${productType}
           ${brandName} 
-          ${priceTag}`);
+          $${priceTag}`);
 
         // showImage
         const imageEl = $("<img></img>");
@@ -74,5 +72,42 @@ const formSubmitHandler = function (event) {
 };
 getProductBtn.on("click", formSubmitHandler);
 
-// function showAll() {}
-// showAll();
+const showAll = (data) => {
+  
+  const containerEl = $("<p></p>").addClass(
+    "list-item flex-row justify-space-between align-center"
+  );
+
+  const productName = data.product_name;
+  const productType = data.product_type;
+  const brandName = data.brand_name;
+  const priceTag = data.price;
+  const titleEl = $("<span></span>").text(`${productName}
+    ${productType}
+    ${brandName} 
+    ${priceTag}`);
+
+  // showImage
+  const imageEl = $("<img></img>");
+  const imageUrl = data.product_image_url;
+  imageEl.attr("src", `https://${imageUrl}`);
+
+  imageEl.appendTo(titleEl)
+  
+  titleEl.appendTo(containerEl);
+  containerEl.appendTo(productEl);
+};
+
+// code from feature/frontend-scripts branch
+$(document).ready(() => {
+  fetch('/api/products', {
+      method: "GET",
+  }).then((response) => {
+      if (response.ok) {
+          return response.json();
+      }
+  }).then((data) => {
+    productEl.text('');
+      data.forEach((product) => showAll(product));
+  });
+});
