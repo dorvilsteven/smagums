@@ -42,19 +42,22 @@ const formSubmitHandler = function (event) {
           "list-item flex-row justify-space-between align-center"
         );
 
-        // const productName = data.product_name;
-        // const productType = ;
-        // const brandName = ;
-        // const priceTag = ;
+        const productName = data.product_name;
+        const productType = data.product_type;
+        const brandName = data.brand_name;
+        const priceTag = data.price;
         const titleEl = $("<span></span>");
-        titleEl.text(`${data.product_name}
-          ${data.product_type}
-          ${data.brand_name} 
-          ${data.price}`);
+        titleEl.text(`${productName}
+          ${productType}
+          ${brandName} 
+          ${priceTag}`);
 
         // showImage
         const imageEl = $("<img></img>");
-        imageEl.attr('src', `https://${data.product_image_url}`)
+        const imageUrl = data.product_image_url;
+        imageEl.attr("src", `https://${imageUrl}`);
+
+
         imageEl.appendTo(titleEl)
         
         titleEl.appendTo(containerEl);
