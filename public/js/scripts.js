@@ -27,15 +27,15 @@ const isChecked = (filter) => {
 }
 
 const formSubmitHandler = (filterList) => {
-    const dataObj = {
-        gender: [],
-        product_type: [],
-        brand_name: [],
-        price: [],
-    }
-    filterList.forEach((filter) => {
+    // const dataObj = {
+    //     gender: [],
+    //     product_type: [],
+    //     brand_name: [],
+    //     price: [],
+    // }
+    // filterList.forEach((filter) => {
         
-    });
+    // });
     fetch('/api/products/', {
         method: "GET",
         // headers: {
@@ -56,4 +56,16 @@ formBtn.on('click', (event) => {
     });
     console.log(finalFilter);
 
+});
+
+$(document).ready(() => {
+    fetch('/api/products', {
+        method: "GET",
+    }).then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+    }).then((data) => {
+        console.log(data);
+    });
 });
