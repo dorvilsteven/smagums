@@ -17,3 +17,7 @@ a {
 .nav-link:hover {
   color: white;
 }
+
+.img-container img {
+  width: 100%;
+}

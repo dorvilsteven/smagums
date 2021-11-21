@@ -15,6 +15,11 @@ const expensive = $('#100');
 // form
 const filterForm = $('#filter-form');
 const formBtn = $('#form-submit');
+// products display
+const productEl = $("#products");
+
+// line break
+const lineBreak = '<br>';
 
 const options = [men, women, shirts, jackets, bottoms, shoes, asos, sale, regular, expensive];
 
@@ -26,25 +31,50 @@ const isChecked = (filter) => {
     }
 }
 
-const formSubmitHandler = (filterList) => {
-    // const dataObj = {
-    //     gender: [],
-    //     product_type: [],
-    //     brand_name: [],
-    //     price: [],
-    // }
-    // filterList.forEach((filter) => {
-        
-    // });
-    fetch('/api/products/', {
-        method: "GET",
-        // headers: {
-        //     Accept: "application/json",
-        //     "Content-Type": "application/json"
-        // },
-        // body: JSON.stringify()
-    })
+const showProduct = (data) => {
+    // get image, name, brand, product type and price 
+    const productName = $('<h3>').addClass('card-title').text(data.product_name), 
+          productType = $('<p>').addClass('card-text').text(data.product_type), 
+          productBrand = $('<h3>').addClass('card-title').text(data.brand_name), 
+          productPrice = $('<p>').addClass('card-text').text(data.price)
+          productImg = $('<img>').attr('src', `https://${data.product_image_url}`);
+
+    const imgContainer = $('<div>').addClass('img-container').append(productImg);
+
+    const cardBody =  $('<div>').addClass('card-body w-100').append(
+        productName,
+        productType,
+        productBrand,
+        productPrice
+    );
+    // create card element
+    const card = $('<div>').addClass('card m-3').append(
+        $('<div>').addClass('row').append(
+            $('<div>').addClass('col-xs-12 col-sm-6').append(imgContainer),
+            $('<div>').addClass('col-xs-12 col-sm-6').append(cardBody)
+        )
+    );
+
+    productEl.append(card);
 };
+
+// const formSubmitHandler = (filterList) => {
+//     // // const dataObj = {
+//     // //     gender: [],
+//     // //     product_type: [],
+//     // //     brand_name: [],
+//     // //     price: [],
+//     // // }
+
+//     // fetch('/api/products/', {
+//     //     method: "GET",
+//     //     // headers: {
+//     //     //     Accept: "application/json",
+//     //     //     "Content-Type": "application/json"
+//     //     // },
+//     //     // body: JSON.stringify()
+//     // })
+// };
 
 formBtn.on('click', (event) => {
     event.preventDefault();
@@ -67,5 +97,7 @@ $(document).ready(() => {
         }
     }).then((data) => {
         console.log(data);
+        productEl.text('');
+        data.forEach((product) => showProduct(product));
     });
 });
