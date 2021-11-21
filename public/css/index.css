@@ -21,3 +21,6 @@ a {
 .img-container img {
   width: 100%;
 }
+.product-button:hover {
+  background-color: #5900ff;
+}

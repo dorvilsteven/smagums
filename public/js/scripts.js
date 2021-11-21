@@ -8,6 +8,9 @@ const bottoms = $('#bottoms');
 const shoes = $('#shoes');
 // brand 
 const asos = $('#ASOS');
+const vans = $('#Vans');
+const nike = $('#Nike');
+const lacoste = $('#Lacoste');
 // price
 const sale = $('#49');
 const regular = $('#99');
@@ -21,7 +24,7 @@ const productEl = $("#products");
 // line break
 const lineBreak = '<br>';
 
-const options = [men, women, shirts, jackets, bottoms, shoes, asos, sale, regular, expensive];
+const options = [men, women, shirts, jackets, bottoms, shoes, asos, vans, nike, lacoste, sale, regular, expensive];
 
 const isChecked = (filter) => {
     if (filter[0].checked) {
@@ -37,15 +40,23 @@ const showProduct = (data) => {
           productType = $('<p>').addClass('card-text').text(data.product_type), 
           productBrand = $('<h3>').addClass('card-title').text(data.brand_name), 
           productPrice = $('<p>').addClass('card-text').text(data.price)
-          productImg = $('<img>').attr('src', `https://${data.product_image_url}`);
+          productImg = $('<img>').attr('src', `https://${data.product_image_url}`),
+          productID = data.id;
 
     const imgContainer = $('<div>').addClass('img-container').append(productImg);
+
+    
+    // button 
+    const button = $('<a>').addClass('btn btn-secondary mx-auto product-button').attr('href', `/shop/${productID}`).text('View Product');
 
     const cardBody =  $('<div>').addClass('card-body w-100').append(
         productName,
         productType,
+        lineBreak,
         productBrand,
-        productPrice
+        productPrice,
+        lineBreak,
+        button
     );
     // create card element
     const card = $('<div>').addClass('card m-3').append(
