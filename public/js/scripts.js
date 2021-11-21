@@ -26,7 +26,7 @@ const formSubmitHandler = function (event) {
   //   body: JSON.stringify(productObject),
   // }).then();
 
-  fetch("/api/products/6", {
+  fetch("/api/products/4", {
     method: "GET",
   }).then((response) => {
     if (response.ok) {
@@ -35,7 +35,7 @@ const formSubmitHandler = function (event) {
 
         //for one product
         // clear old content every time search is performed
-        productEl.text('');
+        productEl.text("");
 
         const containerEl = $("<p></p>").addClass(
           "list-item flex-row justify-space-between align-center"
@@ -45,22 +45,32 @@ const formSubmitHandler = function (event) {
         const productType = data.product_type;
         const brandName = data.brand_name;
         const priceTag = data.price;
-        const titleEl = $("<span></span>").text(`${productName}
-          ${productType}
-          ${brandName} 
-          $${priceTag}`);
+        const titleEl = $("<span></span>")
+          .text(`${productName}`)
+          .attr("style", "padding: 10px");
+        const typeEl = $("<span>")
+          .text(`${productType}`)
+          .attr("style", "padding: 10px");
+        const brandEl = $("<span>")
+          .text(`${brandName}`)
+          .attr("style", "padding: 10px");
+        const priceEl = $("<span>")
+          .text(`Price: $${priceTag}`)
+          .attr("style", "padding: 10px");
 
         // showImage
         const imageEl = $("<img></img>");
         const imageUrl = data.product_image_url;
         imageEl.attr("src", `https://${imageUrl}`);
 
+        imageEl.appendTo(containerEl);
 
-        imageEl.appendTo(titleEl)
-        
         titleEl.appendTo(containerEl);
+        typeEl.appendTo(containerEl);
+        brandEl.appendTo(containerEl);
+        priceEl.appendTo(containerEl);
         containerEl.appendTo(productEl);
-        
+
         // for all matching products
         // for (let i = 0; i < data.length; i++) {
         //   // (middle element) create a container for each repo
@@ -72,8 +82,8 @@ const formSubmitHandler = function (event) {
 };
 getProductBtn.on("click", formSubmitHandler);
 
+// show all products when shop page loads
 const showAll = (data) => {
-  
   const containerEl = $("<p></p>").addClass(
     "list-item flex-row justify-space-between align-center"
   );
@@ -82,32 +92,45 @@ const showAll = (data) => {
   const productType = data.product_type;
   const brandName = data.brand_name;
   const priceTag = data.price;
-  const titleEl = $("<span></span>").text(`${productName}
-    ${productType}
-    ${brandName} 
-    ${priceTag}`);
+  const titleEl = $("<span></span>")
+    .text(`${productName}`)
+    .attr("style", "padding: 10px");
+  const typeEl = $("<span>")
+    .text(`${productType}`)
+    .attr("style", "padding: 10px");
+  const brandEl = $("<span>")
+    .text(`${brandName}`)
+    .attr("style", "padding: 10px");
+  const priceEl = $("<span>")
+    .text(`Price: $${priceTag}`)
+    .attr("style", "padding: 10px");
 
   // showImage
   const imageEl = $("<img></img>");
   const imageUrl = data.product_image_url;
   imageEl.attr("src", `https://${imageUrl}`);
 
-  imageEl.appendTo(titleEl)
-  
+  imageEl.appendTo(containerEl);
+
   titleEl.appendTo(containerEl);
+  typeEl.appendTo(containerEl);
+  brandEl.appendTo(containerEl);
+  priceEl.appendTo(containerEl);
   containerEl.appendTo(productEl);
 };
 
 // code from feature/frontend-scripts branch
 $(document).ready(() => {
-  fetch('/api/products', {
-      method: "GET",
-  }).then((response) => {
+  fetch("/api/products", {
+    method: "GET",
+  })
+    .then((response) => {
       if (response.ok) {
-          return response.json();
+        return response.json();
       }
-  }).then((data) => {
-    productEl.text('');
+    })
+    .then((data) => {
+      productEl.text("");
       data.forEach((product) => showAll(product));
-  });
+    });
 });
