@@ -9,42 +9,13 @@ router.get("/:id", (req, res) => {
   res.render("singlePage");
 });
 
-// read products by product_type: /api/product?product_type=shoes
-router.get("/", (req, res) => {
-  //what should the path be??
-  Product.findAll({
-    where: { product_type: req.body.product_type },
-  })
-    .then((data) => {
-      if (!data) {
-        res.status(404).json({ message: "None found with this product type" });
-        return;
-      }
-      res.json(data);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// url link for single product
+// route /shop/:id
+router.get("/:id");
 
-// read products by brand_name: /api/product?brand_name=ASOS
-router.get("/", (req, res) => {
-  //what should the path be??
-  Product.findAll({
-    where: { brand_name: req.body.brand_name },
-  })
-    .then((data) => {
-      if (!data) {
-        res.status(404).json({ message: "None found with this brand name" });
-        return;
-      }
-      res.json(data);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// filter for product by: product type
+// where: {[Op.in]: req.body.product_type} /search?product_type=shoes
+router.get("/search");
 
-module.exports = router;
+// filter for product by: brand_name
+router.get("/search");
