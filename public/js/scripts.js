@@ -1,6 +1,85 @@
 const productEl = $("#single-product");
 const getProductBtn = $("#get-product");
 
+const singleProduct = $("#one-product");
+fetch("/api/products/6", {
+  method: "GET",
+}).then((response) => {
+  if (response.ok) {
+    response.json().then((data) => {
+      console.log(data);
+
+      // clear old content every time search is performed
+      productEl.text("");
+
+      const containerEl = $("<p></p>");
+      containerEl.addClass(
+        "list-item flex-row justify-space-between align-center"
+      );
+
+      const productName = data.product_name;
+      const productType = data.product_type;
+      const brandName = data.brand_name;
+      const priceTag = data.price;
+      const titleEl = $("<span></span>");
+      titleEl.text(`${productName}
+        ${productType}
+        ${brandName} 
+        ${priceTag}`);
+
+      // // showImage
+      const imageEl = $("<img></img>");
+      const imageUrl = data.product_image_url;
+      imageEl.attr("src", `https://${imageUrl}`);
+
+      //go to a single product page
+      const linkEl = $("<a></a>");
+      // linkEl.attr("href", `/shop/${data.id}`);
+      // linkEl.attr("target", "_blank"); //in new page
+      // linkEl.appendTo(imageEl);
+      // linkEl.on("click", (event) => {
+      //   event.preventDefault();
+
+      //   fetch(`/api/products/${data.id}`).then((response) => {
+      //     response.json().then((singleProductData) => {
+      //       console.log(singleProductData);
+      //       // singleProduct.text("");
+
+      //       // const containerEl = $("<p></p>");
+      //       // containerEl.addClass(
+      //       //   "list-item flex-row justify-space-between align-center"
+      //       // );
+
+      //       // const productName = singleProductData.product_name;
+      //       // const productType = singleProductData.product_type;
+      //       // const brandName = singleProductData.brand_name;
+      //       // const priceTag = singleProductData.price;
+      //       // const titleEl = $("<span></span>");
+      //       // titleEl.text(`${productName}
+      //       //   ${productType}
+      //       //   ${brandName}
+      //       //   ${priceTag}`);
+
+      //       // // showImage
+      //       // const imageEl = $("<img></img>");
+      //       // const imageUrl = singleProductData.product_image_url;
+      //       // imageEl.attr("src", `https://${imageUrl}`);
+
+      //       // imageEl.appendTo(titleEl);
+      //       // titleEl.appendTo(containerEl);
+      //       // containerEl.appendTo(singleProduct);
+      //     });
+      //   });
+      // });
+
+      imageEl.appendTo(titleEl);
+
+      titleEl.appendTo(containerEl);
+      containerEl.appendTo(productEl);
+    });
+  }
+});
+
 const formSubmitHandler = function (event) {
   event.preventDefault();
 

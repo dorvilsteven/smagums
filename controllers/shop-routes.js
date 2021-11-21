@@ -5,6 +5,10 @@ router.get("/", (req, res) => {
   res.render("shop");
 });
 
+router.get("/:id", (req, res) => {
+  res.render("singlePage");
+});
+
 // read products by product_type: /api/product?product_type=shoes
 router.get("/", (req, res) => {
   //what should the path be??
