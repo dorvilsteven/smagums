@@ -47,7 +47,7 @@ const showProduct = (data) => {
 
     
     // button 
-    const button = $('<a>').addClass('btn btn-secondary mx-auto product-button').attr('href', `/shop/${productID}`).text('View Product');
+    const button = $('<a>').addClass('btn btn-secondary mx-auto product-button').attr('href', `/${productID}`).text('View Product');
 
     const cardBody =  $('<div>').addClass('card-body w-100').append(
         productName,
