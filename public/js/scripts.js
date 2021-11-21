@@ -1,75 +1,114 @@
-const productEl = $("#single-product");
-const getProductBtn = $("#get-product");
+// gender 
+const men = $('#men');
+const women = $('#women');
+// product type 
+const shirts = $('#shirts');
+const jackets = $('#jackets');
+const bottoms = $('#bottoms');
+const shoes = $('#shoes');
+// brand 
+const asos = $('#ASOS');
+const vans = $('#Vans');
+const nike = $('#Nike');
+const lacoste = $('#Lacoste');
+// price
+const sale = $('#49');
+const regular = $('#99');
+const expensive = $('#100');
+// form
+const filterForm = $('#filter-form');
+const formBtn = $('#form-submit');
+// products display
+const productEl = $("#products");
 
-const formSubmitHandler = function (event) {
-  event.preventDefault();
+// line break
+const lineBreak = '<br>';
 
-  // construct data object
-  // const dataObj = {
-  //   product_type: [],
-  //   brand_name: []
-  // }
-  // const productObject = {
-  //   product_name: 'Wide',
-  //   product_type: ['shoes', 'jackets'],
-  //   brand_name: ['ASOS DESIGN'],
-  //   product_image_url: 'images.asos-media.com/products/asos-design-wide-fit-oxford-1-in-tan-leather-with-toe-cap/12315538-1-tan',
-  //   price: 54,
-  // };
+const options = [men, women, shirts, jackets, bottoms, shoes, asos, vans, nike, lacoste, sale, regular, expensive];
 
-  // fetch("/api/products/search", {
-  //   method: "POST",
-  //   headers: {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(productObject),
-  // }).then();
-
-  fetch("/api/products/6", {
-    method: "GET",
-  }).then((response) => {
-    if (response.ok) {
-      response.json().then((data) => {
-        //console.log(data);
-
-        //for one product
-        // clear old content every time search is performed
-        productEl.text('');
-
-        const containerEl = $("<p></p>");
-        containerEl.addClass(
-          "list-item flex-row justify-space-between align-center"
-        );
-
-        // const productName = data.product_name;
-        // const productType = ;
-        // const brandName = ;
-        // const priceTag = ;
-        const titleEl = $("<span></span>");
-        titleEl.text(`${data.product_name}
-          ${data.product_type}
-          ${data.brand_name} 
-          ${data.price}`);
-
-        // showImage
-        const imageEl = $("<img></img>");
-        imageEl.attr('src', `https://${data.product_image_url}`)
-        imageEl.appendTo(titleEl)
-        
-        titleEl.appendTo(containerEl);
-        containerEl.appendTo(productEl);
-        
-        // for all matching products
-        // for (let i = 0; i < data.length; i++) {
-        //   // (middle element) create a container for each repo
-
-        // }
-      });
+const isChecked = (filter) => {
+    if (filter[0].checked) {
+        return true;
+    } else {
+        return false;
     }
-  });
-};
-getProductBtn.on("click", formSubmitHandler);
+}
 
-// function showAll() {}
-// showAll();
+const showProduct = (data) => {
+    // get image, name, brand, product type and price 
+    const productName = $('<h3>').addClass('card-title').text(data.product_name), 
+          productType = $('<p>').addClass('card-text').text(data.product_type), 
+          productBrand = $('<h3>').addClass('card-title').text(data.brand_name), 
+          productPrice = $('<p>').addClass('card-text').text(data.price)
+          productImg = $('<img>').attr('src', `https://${data.product_image_url}`),
+          productID = data.id;
+
+    const imgContainer = $('<div>').addClass('img-container').append(productImg);
+
+    
+    // button 
+    const button = $('<a>').addClass('btn btn-secondary mx-auto product-button').attr('href', `/shop/${productID}`).text('View Product');
+
+    const cardBody =  $('<div>').addClass('card-body w-100').append(
+        productName,
+        productType,
+        lineBreak,
+        productBrand,
+        productPrice,
+        lineBreak,
+        button
+    );
+    // create card element
+    const card = $('<div>').addClass('card m-3').append(
+        $('<div>').addClass('row').append(
+            $('<div>').addClass('col-xs-12 col-sm-6').append(imgContainer),
+            $('<div>').addClass('col-xs-12 col-sm-6').append(cardBody)
+        )
+    );
+
+    productEl.append(card);
+};
+
+// const formSubmitHandler = (filterList) => {
+//     // // const dataObj = {
+//     // //     gender: [],
+//     // //     product_type: [],
+//     // //     brand_name: [],
+//     // //     price: [],
+//     // // }
+
+//     // fetch('/api/products/', {
+//     //     method: "GET",
+//     //     // headers: {
+//     //     //     Accept: "application/json",
+//     //     //     "Content-Type": "application/json"
+//     //     // },
+//     //     // body: JSON.stringify()
+//     // })
+// };
+
+formBtn.on('click', (event) => {
+    event.preventDefault();
+    const finalFilter = [];
+    options.forEach((filter) => {
+        if (isChecked(filter)) {
+            finalFilter.push(filter[0].id);
+        }
+    });
+    console.log(finalFilter);
+
+});
+
+$(document).ready(() => {
+    fetch('/api/products', {
+        method: "GET",
+    }).then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+    }).then((data) => {
+        console.log(data);
+        productEl.text('');
+        data.forEach((product) => showProduct(product));
+    });
+});
