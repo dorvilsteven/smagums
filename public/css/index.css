@@ -1,15 +1,26 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  /* border: 1px solid black; */
 }
 
-.carousel-caption {
-  top: 1.5rem;
-  font-size: 3rem;
-  left: 10%;
-  right: auto;
+a {
+  text-decoration: none;
+  color: white;
 }
-.carousel-caption h2,
-.carousel-caption p {
-  background-color: bisque;
-  padding: 1.5rem;
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.img-container img {
+  width: 100%;
+}
+.product-button:hover {
+  background-color: #5900ff;
 }

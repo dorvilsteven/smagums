@@ -1,9 +1,9 @@
 <main class="container-fluid">
     <div class="row">
         <section class="col-sm-12 col-md-4">
-            <div class="container menu-form">
-                <form>
-                    <div class="gender border-bottom mb-3">
+            <div class="container menu-form overflow-scroll">
+                <form id="filter-form">
+                    <div class="gender border-bottom mb-3 pb-3 d-md-block">
                         <h3>Gender</h3>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="men">
@@ -18,42 +18,95 @@
                             </label>
                         </div>
                     </div>
-                    <div class="product border-bottom mb-3">
+                    <div class="product-type border-bottom mb-3 pb-3 d-md-block">
                         <h3>Product Type</h3>
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <input class="form-check-input" type="checkbox" id="tshirts">
-                                <label class="form-check-label" for="tshirts">
-                                    T-Shirts
+                                <input class="form-check-input" type="checkbox" id="shirts">
+                                <label class="form-check-label" for="shirts">
+                                    Shirts
                                 </label>
                             </li>
                             <li class="list-group-item">
-                                <input class="form-check-input" type="checkbox" id="tshirts">
-                                <label class="form-check-label" for="tshirts">
-                                    T-Shirts
+                                <input class="form-check-input" type="checkbox" id="jackets">
+                                <label class="form-check-label" for="jackets">
+                                    Jackets
                                 </label>
                             </li>
                             <li class="list-group-item">
-                                <input class="form-check-input" type="checkbox" id="tshirts">
-                                <label class="form-check-label" for="tshirts">
-                                    T-Shirts
+                                <input class="form-check-input" type="checkbox" id="bottoms">
+                                <label class="form-check-label" for="bottoms">
+                                    Bottoms
                                 </label>
                             </li>
                             <li class="list-group-item">
-                                <input class="form-check-input" type="checkbox" id="tshirts">
-                                <label class="form-check-label" for="tshirts">
-                                    T-Shirts
+                                <input class="form-check-input" type="checkbox" id="shoes">
+                                <label class="form-check-label" for="shoes">
+                                    shoes
                                 </label>
                             </li>
                         </ul>
                     </div>
-                    <div class="price border-bottom mb-3"></div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="brand border-bottom mb-3 pb-3 d-md-block">
+                        <h3>Brand Name</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" id="ASOS">
+                                <label class="form-check-label" for="ASOS">
+                                    ASOS Designs
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" id="Vans">
+                                <label class="form-check-label" for="Vans">
+                                    Vans
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" id="Nike">
+                                <label class="form-check-label" for="Nike">
+                                    Nike
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" id="Lacoste">
+                                <label class="form-check-label" for="Lacoste">
+                                    Lacoste
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="price pb-3 d-md-block">
+                        <h3>Price</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" id="49">
+                                <label class="form-check-label" for="sale">
+                                    Less Than $50
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" id="99">
+                                <label class="form-check-label" for="regular">
+                                    Less Than $100
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" id="100">
+                                <label class="form-check-label" for="expensive">
+                                    $100 or More
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-3 d-md-block" id="form-submit">Submit</button>
                 </form>
             </div>
         </section>
         <section class="col-sm-12 col-md-8">
             <h1>products</h1>
+            {{!-- display products here  --}}
+            <div id="products"></div>
         </section>
     </div>
 </main>
