@@ -1,7 +1,12 @@
+const bcrypt = require("bcrypt");
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class User extends Model {}
+class User extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password); // method from bcrypt will determine true or false
+  }
+}
 
 User.init(
   {
@@ -34,6 +39,23 @@ User.init(
     },
   },
   {
+    hooks: {
+      // set up beforeCreate to run before /user-routes runs the route for .create
+      // beforeCreate(data) {
+      //   return bcrypt.hash(data.password, 10).then((newData) => {
+      //     return newData;
+      //   });
+      // },
+      async beforeCreate(newData) {
+        newData.password = await bcrypt.hash(newData.password, 10);
+        return newData;
+      },
+      // set up for .update
+      async beforeUpdate(updatedData) {
+        updatedData.password = await bcrypt.hash(updatedData.password, 10);
+        return updatedData;
+      },
+    },
     //table config
     // pass in our imported sequelize connection (the direct connection to our database)
     sequelize,
