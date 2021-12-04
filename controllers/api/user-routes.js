@@ -40,7 +40,16 @@ router.post("/", (req, res) => {
     email: req.body.email,
     password: req.body.password,
   })
-    .then((data) => res.json(data))
+    .then((data) => {
+      req.session.save(() => {
+        req.session.user_id = data.id;
+        req.session.username = data.username;
+        req.session.loggedIn = true; // use the request input to stay logged in
+
+        res.json(data);
+        console.log(req.session.loggedIn);
+      });
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -65,8 +74,26 @@ router.post("/login", (req, res) => {
       res.status(400).json({ message: "Password incorrect" });
       return;
     }
-    res.json({ user: data, message: "You're now logged in!" });
+
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = data.id;
+      req.session.username = data.username;
+      req.session.loggedIn = true; // use the request input to stay logged in
+
+      res.json({ user: data, message: "You're now logged in!" });
+    });
   });
+});
+
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end(); //not even logged in, so not able to log out
+  }
 });
 
 // update /api/users/1
