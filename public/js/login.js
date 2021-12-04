@@ -19,7 +19,7 @@ async function signupFormHandler(event) {
     });
     if (res.ok) {
       console.log("success");
-      document.location.replace("/");
+      document.location.replace("/shop");
     } else {
       alert(res.statusText);
     }
@@ -46,7 +46,7 @@ async function loginFormHandler(event) {
     });
     if (res.ok) {
       //console.log("logged in");
-      document.location.replace("/"); // when you first successfully login, redirect to home page
+      document.location.replace("/shop"); // when you first successfully login, redirect to home page
     } else {
       alert(res.statusText);
     }
