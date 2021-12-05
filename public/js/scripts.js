@@ -40,7 +40,7 @@ const options = [
   expensive,
 ];
 
-const isChecked = (filter) => {
+const isSelected = (filter) => {
   if (filter[0].checked) {
     return true;
   } else {
@@ -91,33 +91,47 @@ const showProduct = (data) => {
   productEl.append(card);
 };
 
-// const formSubmitHandler = (filterList) => {
-//     // // const dataObj = {
-//     // //     gender: [],
-//     // //     product_type: [],
-//     // //     brand_name: [],
-//     // //     price: [],
-//     // // }
+const genders = ["men", "women"];
+const productType = ["shirts", "jackets", "bottoms", "shoes"];
+const brandName = ["asos", "vans", "nike", "lacoste"];
 
-//     // fetch('/api/products/', {
-//     //     method: "GET",
-//     //     // headers: {
-//     //     //     Accept: "application/json",
-//     //     //     "Content-Type": "application/json"
-//     //     // },
-//     //     // body: JSON.stringify()
-//     // })
-// };
+async function search(finalFilter) {
+  const dataObj = {
+    //gender: finalFilter.filter((str) => genders.includes(str)), //['women']
+    //product_type: finalFilter.filter((str) => productType.includes(str)),
+    brand_name: finalFilter.filter((str) => brandName.includes(str)), //['ASOS']
+  };
+
+  if (dataObj) {
+    const filterFetchResponse = await fetch("/api/searchByFilter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataObj),
+    });
+
+    if (filterFetchResponse.ok) {
+      showProduct(filterFetchResponse);
+      console.log(dataObj);
+      console.log(filterFetchResponse);
+    } else {
+      console.log("None found");
+    }
+  }
+}
 
 formBtn.on("click", (event) => {
   event.preventDefault();
   const finalFilter = [];
   options.forEach((filter) => {
-    if (isChecked(filter)) {
+    if (isSelected(filter)) {
       finalFilter.push(filter[0].id);
     }
   });
-  console.log(finalFilter);
+  //console.log(finalFilter);
+
+  search(finalFilter);
 });
 
 $(document).ready(() => {
