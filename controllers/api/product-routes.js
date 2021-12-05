@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Product } = require("../../models");
-// const { Op } = require("sequelize");
+const { Op } = require("sequelize");
 
 // internal use /api, so developers can add product info in database
 router.get("/", (req, res) => {
@@ -39,6 +39,24 @@ router.post("/", (req, res) => {
     brand_name: req.body.brand_name,
     product_image_url: req.body.product_image_url,
     price: req.body.price,
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+// /api/products?brand_name=
+router.post("/searchByFilter", (req, res) => {
+  Product.findAll({
+    where: {
+      // gender: {
+      //   [Op.in]: req.body.gender,
+      // },
+      brand_name: {
+        [Op.in]: req.body.brand_name,
+      },
+    },
   })
     .then((data) => res.json(data))
     .catch((err) => {
