@@ -2,7 +2,7 @@
 
 - [Description ](#description)
 - [Technologies Used](#technologies-used)
-- [Installation and Usage](#installation-and-use)
+- [Installation and Usage](#installation-and-usage)
 - [Created By](#created-by)
 - [License](#license)
 
@@ -20,7 +20,7 @@ This app makes use of Node.js, Express.js, Heroku, JavaScript, Bootstrap, Sequel
 ## Installation and Usage
 Clone the repo and open the directory in a code editor of your choice.  
 Run ```npm i``` to install all dependencies.  
-Then, create a .env file at the root of the directory and enter your own DB_ROOT, DB_USER, DB_PASSWORD config.  
+Make sure to have MySQL on your local computer. Then, create a .env file at the root of the directory and enter your own DB_NAME, DB_USER, DB_PW config to log in to your MySQL.  
 Finally, type in the command line:  
 ```npm run dev```  
 and open the deployed [link](https://smagums-store.herokuapp.com/). Enjoy browsing!  
@@ -36,7 +36,7 @@ GitHub usernames:
 
 MIT License
 
-Copyright (c) [2021] [Jessie Li, Steven Dorvil]
+Copyright (c) [2021] [Zhe Qi (Jessie) Li, Steven Dorvil]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
