@@ -1,25 +1,104 @@
-<div class="container-fluid">
-    <form class="row g-3 align-items-center bg-light w-50">
-        <div class="input-group">
-            <div class="input-group-text">
-                <label for="login-username">Username</label>
-            </div>
-            <input type="text" class="form-control" id="login-username" placeholder="johndoe@example.com">
-        </div>
-        <div class="input-group">
-            <div class="input-group-text">
-                <label for="login-password">Password</label>
-            </div>
-            <input type="text" class="form-control" id="login-password" placeholder="*Enter Secure Password">
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Login</button>
-        </div>
-    </form>
-    <div class="row">
-        <div class="col-12">
-            <h4>Don't have an account?</h4>
-            <a href="/signup" class="btn btn-primary">Sign Up</a>
-        </div>
+<div class="signup-form container-fluid">
+  <form class="row g-3 align-items-center bg-light w-50">
+    {{! <div class="input-group">
+      <div class="input-group-text">
+        <label for="login-firstname">First Name</label>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="login-firstname"
+        placeholder="John"
+      />
     </div>
+    <div class="input-group">
+      <div class="input-group-text">
+        <label for="login-lastname">Last Name</label>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="login-lastname"
+        placeholder="Doe"
+      />
+    </div> }}
+    <div class="input-group">
+      <div class="input-group-text">
+        <label for="username-signup">Username</label>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="username-signup"
+        placeholder="johndoe"
+      />
+    </div>
+    <div class="input-group">
+      <div class="input-group-text">
+        <label for="email-signup">Email</label>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="email-signup"
+        placeholder="johndoe@example.com"
+      />
+    </div>
+    <div class="input-group">
+      <div class="input-group-text">
+        <label for="password-signup">Password</label>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="password-signup"
+        placeholder="*Enter Secure Password"
+      />
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+  </form>
+  {{! <div class="row">
+    <div class="col-12">
+      <h4>Already have an account?</h4>
+      <a href="/login" class="btn btn-primary">Login</a>
+    </div>
+  </div> }}
 </div>
+<div class="login-form container-fluid">
+  <form class="row g-3 align-items-center bg-light w-50">
+    <div class="input-group">
+      <div class="input-group-text">
+        <label for="email-login">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email-login"
+          placeholder="johndoe@example.com"
+        />
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-group-text">
+        <label for="password-login">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          id="password-login"
+          placeholder="*Enter Secure Password"
+        />
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+  {{! <div class="row">
+    <div class="col-12">
+      <h4>Don't have an account?</h4>
+      <a href="/signup" class="btn btn-primary">Sign Up</a>
+    </div>
+  </div> }}
+</div>
+<script src="/js/login.js"></script>
