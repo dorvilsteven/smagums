@@ -8,7 +8,7 @@ const showSingleProduct = (data) => {
     productType = $("<p>").addClass("card-text").text(data.product_type),
     productBrand = $("<h3>").addClass("card-title").text(data.brand_name),
     productPrice = $("<p>").addClass("card-text").text(data.price);
-    (productImg = $("<img>").attr("src", `https://${data.product_image_url}`)),
+    (productImg = $("<img>").attr("src", `${data.product_image_url}`)),
     (productID = data.id);
 
   const imgContainer = $("<div>").addClass("img-container").append(productImg);
