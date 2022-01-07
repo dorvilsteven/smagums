@@ -1,9 +1,9 @@
-// const router = require("express").Router();
-// const { Product } = require("../models");
+const router = require("express").Router();
+const { Product } = require("../models");
 
-// router.get("/:id", (req, res) => {
-//   res.render("singlepage");
-// });
+router.get("/:id", (req, res) => {
+  res.render("singlepage");
+});
 
 
-// module.exports = router;
+module.exports = router;
