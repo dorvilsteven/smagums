@@ -112,7 +112,7 @@ async function search(finalFilter) {
     });
 
     if (filterFetchResponse.ok) {
-      showProduct(filterFetchResponse);
+      // showProduct(filterFetchResponse);
       console.log(dataObj);
       console.log(filterFetchResponse);
     } else {
