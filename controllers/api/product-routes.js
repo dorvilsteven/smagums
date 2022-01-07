@@ -40,11 +40,11 @@ router.post("/", (req, res) => {
     product_image_url: req.body.product_image_url,
     price: req.body.price,
   })
-    .then((data) => res.json(data))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  .then((data) => res.json(data))
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 // /api/products?brand_name=
 router.post("/searchByFilter", (req, res) => {

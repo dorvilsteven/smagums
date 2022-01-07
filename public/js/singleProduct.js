@@ -46,7 +46,7 @@ const showSingleProduct = (data) => {
 };
 
 $(document).ready(() => {
-    const id = document.URL[30];
+    const id = document.URL[(document.URL.length - 1)];
     console.log(id);
   fetch(`/api/products/${id}`, {
     method: "GET",
