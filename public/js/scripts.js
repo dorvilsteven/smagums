@@ -40,6 +40,10 @@ const options = [
   expensive,
 ];
 
+const genders = ["men", "women"];
+const productType = ["shirts", "jackets", "bottoms", "shoes"];
+const brandName = ["ASOS DESIGN", "vans", "nike", "lacoste"];
+
 const isSelected = (filter) => {
   if (filter[0].checked) {
     return true;
@@ -54,7 +58,7 @@ const showProduct = (data) => {
     productType = $("<p>").addClass("card-text").text(data.product_type),
     productBrand = $("<h3>").addClass("card-title").text(data.brand_name),
     productPrice = $("<p>").addClass("card-text").text(data.price);
-  (productImg = $("<img>").attr("src", `https://${data.product_image_url}`)),
+    (productImg = $("<img>").attr("src", `${data.product_image_url}`)),
     (productID = data.id);
 
   const imgContainer = $("<div>").addClass("img-container").append(productImg);
@@ -62,7 +66,7 @@ const showProduct = (data) => {
   // button
   const button = $("<a>")
     .addClass("btn btn-secondary mx-auto product-button")
-    .attr("href", `/${productID}`)
+    .attr("href", `/product/${productID}`)
     .text("View Product");
 
   const cardBody = $("<div>")
@@ -91,10 +95,6 @@ const showProduct = (data) => {
   productEl.append(card);
 };
 
-const genders = ["men", "women"];
-const productType = ["shirts", "jackets", "bottoms", "shoes"];
-const brandName = ["asos", "vans", "nike", "lacoste"];
-
 async function search(finalFilter) {
   const dataObj = {
     //gender: finalFilter.filter((str) => genders.includes(str)), //['women']
@@ -112,7 +112,7 @@ async function search(finalFilter) {
     });
 
     if (filterFetchResponse.ok) {
-      showProduct(filterFetchResponse);
+      // showProduct(filterFetchResponse);
       console.log(dataObj);
       console.log(filterFetchResponse);
     } else {
