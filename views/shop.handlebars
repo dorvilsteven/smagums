@@ -1,23 +1,9 @@
 <main class="container-fluid">
   <div class="row">
     <section class="col-sm-12 col-md-4">
-      <div class="container menu-form overflow-scroll">
+      <div class="container menu-form border">
         <form id="filter-form">
-          <div class="gender border-bottom mb-3 pb-3 d-md-block">
-            <h3>Gender</h3>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="men" />
-              <label class="form-check-label" for="men">
-                Men
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="women" />
-              <label class="form-check-label" for="women">
-                Women
-              </label>
-            </div>
-          </div>
+          {{!-- product type --}}
           <div class="product-type border-bottom mb-3 pb-3 d-md-block">
             <h3>Product Type</h3>
             <ul class="list-group">
@@ -47,6 +33,7 @@
               </li>
             </ul>
           </div>
+          {{!-- brand name --}}
           <div class="brand border-bottom mb-3 pb-3 d-md-block">
             <h3>Brand Name</h3>
             <ul class="list-group">
@@ -76,29 +63,7 @@
               </li>
             </ul>
           </div>
-          <div class="price pb-3 d-md-block">
-            <h3>Price</h3>
-            <ul class="list-group">
-              <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="49" />
-                <label class="form-check-label" for="sale">
-                  Less Than $50
-                </label>
-              </li>
-              <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="99" />
-                <label class="form-check-label" for="regular">
-                  Less Than $100
-                </label>
-              </li>
-              <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="100" />
-                <label class="form-check-label" for="expensive">
-                  $100 or More
-                </label>
-              </li>
-            </ul>
-          </div>
+          {{!-- form submit button --}}
           <button
             type="submit"
             class="btn btn-primary mb-3 d-md-block"

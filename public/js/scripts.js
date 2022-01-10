@@ -87,8 +87,8 @@ const showProduct = (data) => {
       $("<div>")
         .addClass("row")
         .append(
-          $("<div>").addClass("col-xs-12 col-sm-6").append(imgContainer),
-          $("<div>").addClass("col-xs-12 col-sm-6").append(cardBody)
+          $("<div>").addClass("col-12 imgCont").append(imgContainer),
+          $("<div>").addClass("col-12 textCont").append(cardBody)
         )
     );
 

@@ -18,9 +18,26 @@ a {
   color: white;
 }
 
-.img-container img {
-  width: 100%;
+.card {
+  width: min-content;
+}
+
+.imgCont {
+  width: auto;
+}
+
+.textCont {
+  width: 20rem;
+}
+
+.img-container {
+  /* width: 100%; */
+  width: 20rem;
 }
 .product-button:hover {
   background-color: #5900ff;
+}
+
+#products {
+  display: flex;
 }
