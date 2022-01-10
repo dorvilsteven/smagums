@@ -103,16 +103,9 @@ async function search(finalFilter) {
     })
     .then((data) => {
       console.log(data);
+      productEl.text("");
       data.forEach((product) => showProduct(product));
-    })
-
-    // if (filterFetchResponse.ok) {
-    //   console.log(filterFetchResponse);
-    //   // showProduct(filterFetchResponse);
-    // } else {
-    //   console.log("None found");
-    //   productEl.text("No Products Found!");
-    // }
+    });
   }
 }
 
