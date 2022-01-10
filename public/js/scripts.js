@@ -103,6 +103,7 @@ async function search(finalFilter) {
     })
     .then((data) => {
       console.log(data);
+      data.forEach((product) => showProduct(product));
     })
 
     // if (filterFetchResponse.ok) {
