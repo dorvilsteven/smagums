@@ -1,104 +1,75 @@
 <main class="container-fluid">
   <div class="row">
     <section class="col-sm-12 col-md-4">
-      <div class="container menu-form overflow-scroll">
+      <div class="container menu-form border">
         <form id="filter-form">
-          <div class="gender border-bottom mb-3 pb-3 d-md-block">
-            <h3>Gender</h3>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="men" />
-              <label class="form-check-label" for="men">
-                Men
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="women" />
-              <label class="form-check-label" for="women">
-                Women
-              </label>
-            </div>
-          </div>
+          {{!-- product type --}}
           <div class="product-type border-bottom mb-3 pb-3 d-md-block">
             <h3>Product Type</h3>
             <ul class="list-group">
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="shirts" />
                 <label class="form-check-label" for="shirts">
-                  Shirts
+                  <input class="form-check-input" type="checkbox" id="shirts" />
+                  shirts
                 </label>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="jackets" />
                 <label class="form-check-label" for="jackets">
-                  Jackets
+                  <input class="form-check-input" type="checkbox" id="jackets" />
+                  jackets
                 </label>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="bottoms" />
                 <label class="form-check-label" for="bottoms">
-                  Bottoms
+                  <input class="form-check-input" type="checkbox" id="bottoms" />
+                  bottoms
                 </label>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="shoes" />
                 <label class="form-check-label" for="shoes">
+                  <input class="form-check-input" type="checkbox" id="shoes" />
                   shoes
                 </label>
               </li>
             </ul>
           </div>
+          {{!-- brand name --}}
           <div class="brand border-bottom mb-3 pb-3 d-md-block">
             <h3>Brand Name</h3>
             <ul class="list-group">
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="ASOS" />
-                <label class="form-check-label" for="ASOS">
-                  ASOS Designs
+                <label class="form-check-label" for="ASOSDesign">
+                  <input class="form-check-input" type="checkbox" id="ASOS" />
+                  ASOS Design
                 </label>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="Vans" />
                 <label class="form-check-label" for="Vans">
+                  <input class="form-check-input" type="checkbox" id="Vans" />
                   Vans
                 </label>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="Nike" />
                 <label class="form-check-label" for="Nike">
+                  <input class="form-check-input" type="checkbox" id="Nike" />
                   Nike
                 </label>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="Lacoste" />
                 <label class="form-check-label" for="Lacoste">
+                  <input class="form-check-input" type="checkbox" id="Lacoste" />
                   Lacoste
                 </label>
               </li>
-            </ul>
-          </div>
-          <div class="price pb-3 d-md-block">
-            <h3>Price</h3>
-            <ul class="list-group">
               <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="49" />
-                <label class="form-check-label" for="sale">
-                  Less Than $50
-                </label>
-              </li>
-              <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="99" />
-                <label class="form-check-label" for="regular">
-                  Less Than $100
-                </label>
-              </li>
-              <li class="list-group-item">
-                <input class="form-check-input" type="radio" id="100" />
-                <label class="form-check-label" for="expensive">
-                  $100 or More
+                <label class="form-check-label" for="TedBaker">
+                  <input class="form-check-input" type="checkbox" id="TedBaker" />
+                  Ted Baker
                 </label>
               </li>
             </ul>
           </div>
+          {{!-- form submit button --}}
           <button
             type="submit"
             class="btn btn-primary mb-3 d-md-block"

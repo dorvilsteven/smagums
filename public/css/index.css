@@ -18,9 +18,32 @@ a {
   color: white;
 }
 
-.img-container img {
+.card-homepage {
+  width: min-content;
+}
+
+.imgCont {
+  width: auto;
+}
+
+.textCont {
+  width: 20rem;
+}
+
+.img-container {
   width: 100%;
 }
 .product-button:hover {
   background-color: #5900ff;
+}
+
+#products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#single-product {
+  display: flex;
+  justify-content: center;
 }

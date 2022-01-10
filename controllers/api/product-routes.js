@@ -50,15 +50,17 @@ router.post("/", (req, res) => {
 router.post("/searchByFilter", (req, res) => {
   Product.findAll({
     where: {
-      // gender: {
-      //   [Op.in]: req.body.gender,
-      // },
-      brand_name: {
-        [Op.in]: req.body.brand_name,
+      product_type: {
+        [Op.in]: req.body.product_type
       },
-    },
+      brand_name: {
+        [Op.in]: req.body.brand_name
+      }
+    }
   })
-    .then((data) => res.json(data))
+    .then((data) => {
+      res.json(data);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
