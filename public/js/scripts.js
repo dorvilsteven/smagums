@@ -99,13 +99,24 @@ async function search(finalFilter) {
     .then((response) => {
       if (response.ok) {
         return response.json();
+      } else {
+        console.log("None found");
+        productEl.text("No Products Found!");
       }
     })
     .then((data) => {
       console.log(data);
       productEl.text("");
       data.forEach((product) => showProduct(product));
-    });
+    })
+
+    // if (filterFetchResponse.ok) {
+    //   console.log(filterFetchResponse);
+    //   // showProduct(filterFetchResponse);
+    // } else {
+    //   console.log("None found");
+    //   productEl.text("No Products Found!");
+    // }
   }
 }
 
