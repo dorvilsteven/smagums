@@ -18,7 +18,7 @@ a {
   color: white;
 }
 
-.card {
+.card-homepage {
   width: min-content;
 }
 
@@ -31,8 +31,7 @@ a {
 }
 
 .img-container {
-  /* width: 100%; */
-  width: 20rem;
+  width: 100%;
 }
 .product-button:hover {
   background-color: #5900ff;
@@ -40,4 +39,11 @@ a {
 
 #products {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#single-product {
+  display: flex;
+  justify-content: center;
 }

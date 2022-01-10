@@ -1,6 +1,6 @@
-// gender
-const men = $("#men");
-const women = $("#women");
+// form
+const filterForm = $("#filter-form");
+const formBtn = $("#form-submit");
 // product type
 const shirts = $("#shirts");
 const jackets = $("#jackets");
@@ -11,22 +11,13 @@ const asos = $("#ASOS");
 const vans = $("#Vans");
 const nike = $("#Nike");
 const lacoste = $("#Lacoste");
-// price
-const sale = $("#49");
-const regular = $("#99");
-const expensive = $("#100");
-// form
-const filterForm = $("#filter-form");
-const formBtn = $("#form-submit");
+const tedbaker = $("#TedBaker");
 // products display
 const productEl = $("#products");
-
 // line break
 const lineBreak = "<br>";
 
 const options = [
-  men,
-  women,
   shirts,
   jackets,
   bottoms,
@@ -35,14 +26,11 @@ const options = [
   vans,
   nike,
   lacoste,
-  sale,
-  regular,
-  expensive,
+  tedbaker
 ];
 
-const genders = ["men", "women"];
-const productType = ["shirts", "jackets", "bottoms", "shoes"];
-const brandName = ["ASOS DESIGN", "vans", "nike", "lacoste"];
+const productTypeArr = ["shirts", "jackets", "bottoms", "shoes"];
+const brandNameArr = ["ASOS Design", "Vans", "Nike", "Lacoste", "Ted Baker"];
 
 const isSelected = (filter) => {
   if (filter[0].checked) {
@@ -82,7 +70,7 @@ const showProduct = (data) => {
     );
   // create card element
   const card = $("<div>")
-    .addClass("card m-3")
+    .addClass("card m-3 card-homepage")
     .append(
       $("<div>")
         .addClass("row")
@@ -97,27 +85,33 @@ const showProduct = (data) => {
 
 async function search(finalFilter) {
   const dataObj = {
-    //gender: finalFilter.filter((str) => genders.includes(str)), //['women']
-    //product_type: finalFilter.filter((str) => productType.includes(str)),
-    brand_name: finalFilter.filter((str) => brandName.includes(str)), //['ASOS']
+    product_type: finalFilter.filter((str) => productTypeArr.includes(str)), //['shoes']
+    brand_name: finalFilter.filter((str) => brandNameArr.includes(str)), //['ASOS Design']
   };
-
   if (dataObj) {
-    const filterFetchResponse = await fetch("/api/searchByFilter", {
+    fetch("/api/products/searchByFilter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dataObj),
-    });
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      console.log(data);
+    })
 
-    if (filterFetchResponse.ok) {
-      // showProduct(filterFetchResponse);
-      console.log(dataObj);
-      console.log(filterFetchResponse);
-    } else {
-      console.log("None found");
-    }
+    // if (filterFetchResponse.ok) {
+    //   console.log(filterFetchResponse);
+    //   // showProduct(filterFetchResponse);
+    // } else {
+    //   console.log("None found");
+    //   productEl.text("No Products Found!");
+    // }
   }
 }
 
@@ -126,10 +120,10 @@ formBtn.on("click", (event) => {
   const finalFilter = [];
   options.forEach((filter) => {
     if (isSelected(filter)) {
-      finalFilter.push(filter[0].id);
+      finalFilter.push(filter[0].nextSibling.data.trim());
     }
   });
-  //console.log(finalFilter);
+  console.log(finalFilter);
 
   search(finalFilter);
 });
